@@ -2,7 +2,8 @@
 	var canvas = $('#playground')[0] || undefined,
 		context = canvas.getContext('2d'),
 		snake_array = [],
-		snake_color = "red";
+		snake_color = "red",
+		
 	
 	//functions	
 	var init = function(){
