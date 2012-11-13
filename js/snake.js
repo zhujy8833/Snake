@@ -68,12 +68,12 @@
 		      		break;
 		      	case direction_arr[2] : //up
 		      		nx = head_cell.x;
-		      		ny = head_cell.y+1;
+		      		ny = head_cell.y-1;
 		      		//splice_i = snake_array.length-1;
 		      		break;
 		      	case direction_arr[3] : //down
 		      		nx = head_cell.x;
-		      		ny = head_cell.y-1;
+		      		ny = head_cell.y+1;
 		      		//splice_i = 0;
 		      		break;
 		      }
@@ -90,7 +90,7 @@
 		      
 		      
 		      if(nx===-1 || ny===-1 || nx === canvas_width/cell_width || ny === (canvas_height)/cell_width || hit===true){
-		      //	init();
+		      	init();
 		      	return;
 		      }
 		      
@@ -151,9 +151,9 @@
 					    	direction = "left";
 					    }
 						break; 
-					case 38 : //down
-						if(direction!=="up"){
-							direction = "down";
+					case 38 : //up
+						if(direction!=="down"){
+							direction = "up";
 							
 						}
 						break;
@@ -162,9 +162,9 @@
 							direction = "right";
 						}
 						break;
-					case 40 :  //up
-					    if(direction!=='down'){
-							direction = "up";
+					case 40 :  //down
+					    if(direction!=='up'){
+							direction = "down";
 						}
 						break;
 					default : 
