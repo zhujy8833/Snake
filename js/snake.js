@@ -44,10 +44,11 @@
 		      context.strokeStyle = "black";
 		      context.strokeRect(0,0,canvas_width, canvas_height);
 		      
-		      //paint snake body
+		      //paint target
 		      context.fillStyle = "red";
+		      context.strokeStyle = "white";
 			  context.fillRect(tx*cell_width,ty*cell_width,cell_width,cell_width);
-			  //context.strokeRect(tx*cell_width,ty*cell_width,cell_width,cell_width);
+			  context.strokeRect(tx*cell_width,ty*cell_width,cell_width,cell_width);
 		      
 		      head_cell = snake_array[snake_array.length-1];
 		      
