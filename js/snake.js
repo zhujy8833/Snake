@@ -13,6 +13,12 @@
 	var direction;// = direction_arr[1];	
 	var run;
 	var score_board = $("#score_board");
+    //params for game difficulty level
+    var difficult_level = 1, //can be 1 to 5
+        starting_point = 150,
+        game_speed,
+        plus = 0.05,
+        gradual_diff = 1;
 	
 	//functions	
 		var init = function(){
@@ -20,15 +26,15 @@
 			  //context.fillRect();
 			  score=0;
 		      direction = direction_arr[1];
-			  
+              //game_speed = Math.floor(100/(difficult_level*gradual_diff))
+
 			  score_board.html(score);
 			  generate_snake();
 			  generate_target();
-				
 			  if(typeof(run)!=='undefined'){
 			   		clearInterval(run);
 			   }
-			  run = setInterval(paint,100);
+			  run = setInterval(paint,starting_point);
 		    
 		},
 	
@@ -91,6 +97,7 @@
 		      
 		      if(nx===-1 || ny===-1 || nx === canvas_width/cell_width || ny === (canvas_height)/cell_width || hit===true){
 		      //	init();
+                $(document).unbind('keydown');
 		      	return;
 		      }
 		      
@@ -100,8 +107,15 @@
 			      		x : tx,
 			      		y : ty
 			      	});
+                    gradual_diff = gradual_diff + plus;
+                    game_speed = Math.floor(starting_point/(difficult_level*gradual_diff))
 			      	score_board.html(score);
 			      	generate_target();
+
+                  if(typeof(run)!=='undefined'){
+                      clearInterval(run);
+                  }
+                  run = setInterval(paint,game_speed);
 		      }
 		      
 
